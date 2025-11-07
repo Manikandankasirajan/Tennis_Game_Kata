@@ -44,3 +44,19 @@ describe("test cases to validate when a player wins the match", () => {
 		expect(tennisGame(gameProgress)).toBe("Player Two Wins!!!");
 	});
 });
+
+describe("test cases to validate when the game is deuce", () => {
+	test("return 'Game in Deuce! player wins the next point gets the advantage' when both player gets atleast three poins and scores are equal", () => {
+		const gameProgress = [
+			"Player One",
+			"Player Two",
+			"Player One",
+			"Player Two",
+			"Player One",
+			"Player Two",
+		];
+		expect(tennisGame(gameProgress)).toBe(
+			"Game in Deuce! player wins the next point gets the advantage"
+		);
+	});
+});
