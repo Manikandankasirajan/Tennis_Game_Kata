@@ -1,3 +1,5 @@
-export default function newGame(gameProgress) {
-	return gameProgress.length === 0 ? "New Game! Love All" : null;
+export default function newGame(playerOneScore, playerTwoScore) {
+	return playerOneScore === 0 && playerTwoScore === 0
+		? "New Game! Love All"
+		: null;
 }

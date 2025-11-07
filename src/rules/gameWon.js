@@ -1,8 +1,13 @@
-import createPlayerAndScoreMapObject from "../utils/createPlayerAndScoreMapObject";
 import playerOneWins from "../utils/playerOneWins";
 import playerTwoWins from "../utils/playerTwoWins";
 
-export default function gameWon(gameProgress) {
-	const gameScores = createPlayerAndScoreMapObject(gameProgress);
-	return playerOneWins(gameScores) || playerTwoWins(gameScores);
+export default function gameWon(
+	playerOneScore,
+	playerTwoScore,
+	lastPointScored
+) {
+	return (
+		playerOneWins(playerOneScore, playerTwoScore, lastPointScored) ||
+		playerTwoWins(playerOneScore, playerTwoScore, lastPointScored)
+	);
 }

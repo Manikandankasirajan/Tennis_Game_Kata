@@ -30,7 +30,9 @@ describe("test cases to validate when a player wins the match", () => {
 			"Player One",
 			"Player One",
 		];
-		expect(tennisGame(gameProgress)).toBe("Player One Wins!!!");
+		expect(tennisGame(gameProgress)).toBe(
+			"Player One Scores..., Player One Wins!!!"
+		);
 	});
 	test("return Player Two Wins!!! if player two reach 4 ppints and has atleast 2 point more than oppenent", () => {
 		const gameProgress = [
@@ -41,7 +43,9 @@ describe("test cases to validate when a player wins the match", () => {
 			"Player Two",
 			"Player Two",
 		];
-		expect(tennisGame(gameProgress)).toBe("Player Two Wins!!!");
+		expect(tennisGame(gameProgress)).toBe(
+			"Player Two Scores..., Player Two Wins!!!"
+		);
 	});
 });
 
@@ -56,7 +60,7 @@ describe("test cases to validate when the game is deuce", () => {
 			"Player Two",
 		];
 		expect(tennisGame(gameProgress)).toBe(
-			"Game in Deuce! player wins the next point gets the advantage"
+			"Player Two Scores... , Game in Deuce! player who wins the next point gets the advantage"
 		);
 	});
 	test("return 'Game in Deuce! player wins the next point gets the advantage' when both player gets atleast three poins and scores are equal", () => {
@@ -69,7 +73,7 @@ describe("test cases to validate when the game is deuce", () => {
 			"Player One",
 		];
 		expect(tennisGame(gameProgress)).toBe(
-			"Game in Deuce! player wins the next point gets the advantage"
+			"Player One Scores... , Game in Deuce! player who wins the next point gets the advantage"
 		);
 	});
 });
@@ -86,7 +90,7 @@ describe("test cases to validate game in advantage scenarios", () => {
 			"Player One",
 		];
 		expect(tennisGame(gameProgress)).toBe(
-			"Player one in Advantage! player one needs one more point to win the match"
+			"Player One Scores..., Player one in Advantage! player one needs one more point to win the match"
 		);
 	});
 	test("return 'Player Two in Advantage! player two needs one more point to win the match' when player two scores after deuce", () => {
@@ -100,7 +104,7 @@ describe("test cases to validate game in advantage scenarios", () => {
 			"Player Two",
 		];
 		expect(tennisGame(gameProgress)).toBe(
-			"Player Two in Advantage! player two needs one more point to win the match"
+			"Player Two Scores..., Player Two in Advantage! player two needs one more point to win the match"
 		);
 	});
 });
@@ -118,7 +122,7 @@ describe("test cases to validate when game goes back to deuce after advantage", 
 			"Player Two",
 		];
 		expect(tennisGame(gameProgress)).toBe(
-			"Game in Deuce! player wins the next point gets the advantage"
+			"Player Two Scores... , Game in Deuce! player who wins the next point gets the advantage"
 		);
 	});
 	test("return 'Game in Deuce! player wins the next point gets the advantage' when player without advantage score the points and scores are equal again", () => {
@@ -133,7 +137,7 @@ describe("test cases to validate when game goes back to deuce after advantage", 
 			"Player One",
 		];
 		expect(tennisGame(gameProgress)).toBe(
-			"Game in Deuce! player wins the next point gets the advantage"
+			"Player One Scores... , Game in Deuce! player who wins the next point gets the advantage"
 		);
 	});
 });
@@ -150,7 +154,9 @@ describe("test cases to validate when player with advantage scored a point to wi
 			"Player One",
 			"Player One",
 		];
-		expect(tennisGame(gameProgress)).toBe("Player One Wins!!!");
+		expect(tennisGame(gameProgress)).toBe(
+			"Player One Scores..., Player One Wins!!!"
+		);
 	});
 	test("return 'Player Two Wins!!!' when player two scored after having an advantage", () => {
 		const gameProgress = [
@@ -163,6 +169,25 @@ describe("test cases to validate when player with advantage scored a point to wi
 			"Player Two",
 			"Player Two",
 		];
-		expect(tennisGame(gameProgress)).toBe("Player Two Wins!!!");
+		expect(tennisGame(gameProgress)).toBe(
+			"Player Two Scores..., Player Two Wins!!!"
+		);
+	});
+});
+
+describe("test cases to validate for invalid inputs", () => {
+	test("to throw error for invalid input", () => {
+		const gameProgress = null;
+		expect(() => tennisGame(gameProgress)).toThrow();
+		expect(() => tennisGame(gameProgress)).toThrow(TypeError);
+		expect(() => tennisGame(gameProgress)).toThrow("Invalid Input Type");
+	});
+	test("to throw error for incorrect input", () => {
+		const gameProgress = ["Player One", "Player Two", "Player Three"];
+		expect(() => tennisGame(gameProgress)).toThrow();
+		expect(() => tennisGame(gameProgress)).toThrow(Error);
+		expect(() => tennisGame(gameProgress)).toThrow(
+			"Incorrect/Unexpected Input"
+		);
 	});
 });

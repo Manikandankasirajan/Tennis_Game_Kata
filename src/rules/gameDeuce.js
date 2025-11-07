@@ -1,12 +1,13 @@
-import createPlayerAndScoreMapObject from "../utils/createPlayerAndScoreMapObject";
-
-export default function gameDeuce(gameProgress) {
-	const gameScores = createPlayerAndScoreMapObject(gameProgress);
+export default function gameDeuce(
+	playerOneScore,
+	playerTwoScore,
+	lastPointScored
+) {
 	if (
-		gameScores["Player One"] >= 3 &&
-		gameScores["Player Two"] >= 3 &&
-		gameScores["Player One"] === gameScores["Player Two"]
+		playerOneScore >= 3 &&
+		playerTwoScore >= 3 &&
+		playerOneScore === playerTwoScore
 	) {
-		return "Game in Deuce! player wins the next point gets the advantage";
+		return `${lastPointScored} Scores... , Game in Deuce! player who wins the next point gets the advantage`;
 	}
 }

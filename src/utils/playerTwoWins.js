@@ -1,10 +1,11 @@
 import { MATCH_POINT } from "../constants";
 
-export default function playerTwoWins(gameScores) {
-	if (
-		gameScores["Player Two"] >= MATCH_POINT &&
-		gameScores["Player Two"] === gameScores["Player One"] + 2
-	) {
-		return "Player Two Wins!!!";
+export default function playerTwoWins(
+	playerOneScore,
+	playerTwoScore,
+	lastPointScored
+) {
+	if (playerTwoScore >= MATCH_POINT && playerTwoScore === playerOneScore + 2) {
+		return `${lastPointScored} Scores..., Player Two Wins!!!`;
 	}
 }

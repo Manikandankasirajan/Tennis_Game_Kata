@@ -1,11 +1,15 @@
 import { GAME_POINT } from "../constants";
 
-export default function playerTwoAdvantage(gameScores) {
+export default function playerTwoAdvantage(
+	playerOneScore,
+	playerTwoScore,
+	lastPointScored
+) {
 	if (
-		gameScores["Player One"] >= GAME_POINT &&
-		gameScores["Player Two"] >= GAME_POINT &&
-		gameScores["Player Two"] === gameScores["Player One"] + 1
+		playerOneScore >= GAME_POINT &&
+		playerTwoScore >= GAME_POINT &&
+		playerTwoScore === playerOneScore + 1
 	) {
-		return "Player Two in Advantage! player two needs one more point to win the match";
+		return `${lastPointScored} Scores..., Player Two in Advantage! player two needs one more point to win the match`;
 	}
 }
