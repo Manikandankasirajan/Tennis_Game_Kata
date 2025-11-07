@@ -59,4 +59,48 @@ describe("test cases to validate when the game is deuce", () => {
 			"Game in Deuce! player wins the next point gets the advantage"
 		);
 	});
+	test("return 'Game in Deuce! player wins the next point gets the advantage' when both player gets atleast three poins and scores are equal", () => {
+		const gameProgress = [
+			"Player One",
+			"Player Two",
+			"Player One",
+			"Player Two",
+			"Player Two",
+			"Player One",
+		];
+		expect(tennisGame(gameProgress)).toBe(
+			"Game in Deuce! player wins the next point gets the advantage"
+		);
+	});
+});
+
+describe("test cases to validate game in advantage scenarios", () => {
+	test("return 'Player one in Advantage! player one needs one more point to win the match' when player one scores after deuce", () => {
+		const gameProgress = [
+			"Player One",
+			"Player Two",
+			"Player One",
+			"Player Two",
+			"Player One",
+			"Player Two",
+			"Player One",
+		];
+		expect(tennisGame(gameProgress)).toBe(
+			"Player one in Advantage! player one needs one more point to win the match"
+		);
+	});
+	test("return 'Player Two in Advantage! player two needs one more point to win the match' when player two scores after deuce", () => {
+		const gameProgress = [
+			"Player One",
+			"Player Two",
+			"Player One",
+			"Player Two",
+			"Player One",
+			"Player Two",
+			"Player Two",
+		];
+		expect(tennisGame(gameProgress)).toBe(
+			"Player Two in Advantage! player two needs one more point to win the match"
+		);
+	});
 });
