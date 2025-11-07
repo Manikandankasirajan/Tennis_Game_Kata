@@ -1,11 +1,11 @@
 import gameAdvantage from "./rules/gameAdvantage";
 import gameDeuce from "./rules/gameDeuce";
-import gameStarts from "./rules/gameStarts";
+import newGame from "./rules/newGame";
 import gameWon from "./rules/gameWon";
-import playerScores from "./rules/playerScores";
+import pointScored from "./rules/pointScored";
 
 export default function tennisGame(gameProgress) {
-	const rules = [gameStarts, playerScores, gameWon, gameDeuce, gameAdvantage];
+	const rules = [newGame, pointScored, gameDeuce, gameAdvantage, gameWon];
 	for (const rule of rules) {
 		const result = rule(gameProgress);
 		if (result) {
